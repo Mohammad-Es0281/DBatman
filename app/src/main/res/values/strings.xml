@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DBatman</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut vestibulum nulla. Morbi vel risus ultrices magna dapibus pellentesque. Nam rhoncus vel erat eget dictum. Mauris fringilla rutrum finibus. Nullam turpis eros, auctor id commodo a, sollicitudin ac nulla. Nulla facilisi. Sed feugiat gravida semper. Nunc iaculis ac magna sed finibus. Proin sagittis tortor quam, sit amet feugiat dui interdum vel.</string>
+    <string name="introduction">Introduction</string>
 </resources>

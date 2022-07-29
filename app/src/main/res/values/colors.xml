@@ -6,5 +6,8 @@
     <color name="deep_orange_200">#FFAB91</color>
     <color name="deep_orange_700">#E64A19</color>
     <color name="black">#FF000000</color>
+    <color name="black_60">#99000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="whole_background">#A6FFF3E0</color>
+    <color name="item_background">#59FFF3E0</color>
 </resources>
