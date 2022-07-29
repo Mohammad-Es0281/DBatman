@@ -1,5 +1,6 @@
 package ir.es.mohammad.dbatman.data.remote
 
+import ir.es.mohammad.dbatman.model.MovieDetails
 import ir.es.mohammad.dbatman.model.MovieItem
 import retrofit2.Response
 import retrofit2.http.GET
@@ -10,5 +11,5 @@ interface MovieApi {
     suspend fun getMovies(@Query("s") query: String? = null): Response<ArrayList<MovieItem>>
 
     @GET("")
-    suspend fun getMovie(@Query("i") id: String): Response<MovieItem>
+    suspend fun getMovie(@Query("i") id: String): Response<MovieDetails>
 }
