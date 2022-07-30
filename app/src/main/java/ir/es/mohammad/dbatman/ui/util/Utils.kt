@@ -30,3 +30,14 @@ fun ImageView.loadUrl(url: String?, vararg requestOptions: RequestOptions) {
     requestOptions.forEach { rqOp -> requestBuilder.apply(rqOp) }
     requestBuilder.into(this)
 }
+
+inline fun Fragment.launchAndRepeatWithViewLifecycle(
+    minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
+    crossinline block: suspend CoroutineScope.() -> Unit
+) {
+    viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycle.repeatOnLifecycle(minActiveState) {
+            block()
+        }
+    }
+}
