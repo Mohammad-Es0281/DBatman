@@ -1,11 +1,15 @@
 package ir.es.mohammad.dbatman.ui
 
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.constraintlayout.widget.Group
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -40,4 +44,19 @@ inline fun Fragment.launchAndRepeatWithViewLifecycle(
             block()
         }
     }
+}
+
+fun View.visible() { visibility = View.VISIBLE }
+fun View.invisible() { visibility = View.INVISIBLE }
+fun View.gone() { visibility = View.GONE }
+
+fun startLoading(groupLoad: Group, lottieLoading: LottieAnimationView) {
+    groupLoad.invisible()
+    lottieLoading.playAnimation()
+}
+
+fun stopLoading(groupLoad: Group, lottieLoading: LottieAnimationView) {
+    lottieLoading.invisible()
+    lottieLoading.pauseAnimation()
+    groupLoad.visible()
 }

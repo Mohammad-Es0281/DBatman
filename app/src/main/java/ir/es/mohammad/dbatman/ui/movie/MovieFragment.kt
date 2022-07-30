@@ -5,13 +5,14 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ir.es.mohammad.dbatman.R
 import ir.es.mohammad.dbatman.data.remote.util.Result
 import ir.es.mohammad.dbatman.databinding.FragmentMovieBinding
-import ir.es.mohammad.dbatman.ui.launchAndRepeatWithViewLifecycle
-import ir.es.mohammad.dbatman.ui.loadUrl
+import ir.es.mohammad.dbatman.ui.*
 import ir.es.mohammad.dbatman.ui.movie.MovieViewModel
+import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class MovieFragment : Fragment(R.layout.fragment_movie) {
@@ -27,12 +28,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
 
         if (savedInstanceState == null)
             viewModel.getMovie(args.id)
-        initViews()
         observe()
-    }
-
-    private fun initViews() {
-
     }
 
     private fun observe() {
@@ -43,15 +39,25 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
 
     private suspend fun observeMovie() {
         viewModel.movieFlow.collect { result ->
-            when (result) {
-                is Result.Loading -> {}
-                is Result.Success -> {
-                    with(binding) {
+            with(binding) {
+                when (result) {
+                    is Result.Loading -> {
+                        textIntroductionTitle.invisible()
+                        startLoading(groupLoad, lottieLoading)
+                    }
+                    is Result.Success -> {
                         movie = result.data!!
                         textToolbarTitle.isSelected = true
+                        textIntroductionTitle.visible()
+                        stopLoading(groupLoad, lottieLoading)
+                    }
+                    is Result.Error -> {
+                        Snackbar.make(requireView(), result.message!!, 10000)
+                            .setAction("Try Again") { viewModel.getMovie(args.id) }.show()
+                        textIntroductionTitle.visible()
+                        stopLoading(groupLoad, lottieLoading)
                     }
                 }
-                is Result.Error -> {}
             }
         }
     }

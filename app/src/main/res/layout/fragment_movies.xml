@@ -8,6 +8,19 @@
     android:background="@color/whole_background"
     tools:context=".ui.MainActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewMovies"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_toolbar"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading_anim" />
+
     <ImageView
         android:id="@+id/img_toolbar"
         android:layout_width="match_parent"
@@ -27,4 +40,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_toolbar"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupLoad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="recyclerViewMovies" />
 </androidx.constraintlayout.widget.ConstraintLayout>
