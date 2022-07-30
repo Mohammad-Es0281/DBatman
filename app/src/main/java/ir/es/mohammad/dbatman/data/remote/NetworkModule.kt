@@ -2,11 +2,14 @@ package ir.es.mohammad.dbatman.data.remote
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-
+import com.google.gson.JsonDeserializer
+import com.google.gson.reflect.TypeToken
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ir.es.mohammad.dbatman.data.remote.util.Deserializer
+import ir.es.mohammad.dbatman.model.MovieItem
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,7 +42,10 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGson(): Gson = GsonBuilder().create()
+    fun provideGson(): Gson = GsonBuilder().registerTypeAdapter(
+        object : TypeToken<ArrayList<MovieItem>>() {}.type,
+        JsonDeserializer { json, _, _ -> Deserializer.jsonToMovieItem(json.asJsonObject) }
+    ).create()
 
     @Provides
     @Singleton

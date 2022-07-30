@@ -7,9 +7,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MovieApi {
-    @GET("")
+    @GET("/")
     suspend fun getMovies(@Query("s") query: String? = null): Response<ArrayList<MovieItem>>
 
-    @GET("")
+    @GET("/")
     suspend fun getMovie(@Query("i") id: String): Response<MovieDetails>
 }
