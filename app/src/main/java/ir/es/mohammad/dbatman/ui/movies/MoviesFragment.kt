@@ -2,19 +2,18 @@ package ir.es.mohammad.dbatman.ui.movies
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ir.es.mohammad.dbatman.R
-import ir.es.mohammad.dbatman.data.remote.util.Result
+import ir.es.mohammad.dbatman.util.Result
 import ir.es.mohammad.dbatman.databinding.FragmentMoviesBinding
-import ir.es.mohammad.dbatman.ui.*
-import kotlinx.coroutines.delay
+import ir.es.mohammad.dbatman.ui.util.launchAndRepeatWithViewLifecycle
+import ir.es.mohammad.dbatman.ui.util.startLoading
+import ir.es.mohammad.dbatman.ui.util.stopLoading
 
 @AndroidEntryPoint
 class MoviesFragment : Fragment(R.layout.fragment_movies) {

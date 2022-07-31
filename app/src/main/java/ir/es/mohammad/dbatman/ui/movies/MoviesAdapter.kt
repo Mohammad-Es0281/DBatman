@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ir.es.mohammad.dbatman.databinding.ItemMovieBinding
 import ir.es.mohammad.dbatman.model.MovieItem
-import ir.es.mohammad.dbatman.ui.loadUrl
+import ir.es.mohammad.dbatman.ui.util.loadUrl
 
 class MoviesAdapter(
     private val onMovieSelected: (movie: MovieItem) -> Unit
