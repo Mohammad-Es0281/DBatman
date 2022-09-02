@@ -1,7 +1,6 @@
-package ir.es.mohammad.dbatman.ui
+package ir.es.mohammad.dbatman.ui.util
 
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.constraintlayout.widget.Group
 import androidx.fragment.app.Fragment

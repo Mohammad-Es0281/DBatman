@@ -1,10 +1,9 @@
-package ir.es.mohammad.dbatman.data.remote.util
+package ir.es.mohammad.dbatman.util
 
 sealed class Result<out R>(
     val data: R? = null,
     val message: String? = null
 ) {
-
     val isSuccess get() = this is Success && data != null
 
     class Success<out T>(data: T) : Result<T>(data)

@@ -1,4 +1,4 @@
-package ir.es.mohammad.dbatman.ui.movies
+package ir.es.mohammad.dbatman.ui.movie
 
 import android.os.Bundle
 import android.view.View
@@ -8,11 +8,9 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ir.es.mohammad.dbatman.R
-import ir.es.mohammad.dbatman.data.remote.util.Result
 import ir.es.mohammad.dbatman.databinding.FragmentMovieBinding
-import ir.es.mohammad.dbatman.ui.*
-import ir.es.mohammad.dbatman.ui.movie.MovieViewModel
-import kotlinx.coroutines.delay
+import ir.es.mohammad.dbatman.ui.util.*
+import ir.es.mohammad.dbatman.util.Result
 
 @AndroidEntryPoint
 class MovieFragment : Fragment(R.layout.fragment_movie) {
